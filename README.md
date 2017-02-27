@@ -1,9 +1,11 @@
+# Setup
+Grab the Fedora [boot.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/25/Workstation/x86_64/os/images/boot.iso)
 
 # Setup Mock
 ```sh
 mock -r fedora-25-x86_64 --init
 mock -r fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart
-mock -r fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks
+mock -r fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso
 ```
 
 # Kickstart
