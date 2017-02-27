@@ -32,6 +32,6 @@ ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F25
 
 #### Make the iso
 ```sh
-livemedia-creator --make-iso --iso=boot.iso --ks=flat-antuple-fedora.ks
+livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-1.iso --ks=flat-antuple-fedora.ks
 ```
 
