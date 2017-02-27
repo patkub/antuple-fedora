@@ -23,13 +23,9 @@ npapi-vlc
 echo Antuple Fedora
 echo Setting hostname...
 hostnamectl set-hostname laptop.antuple
-echo Updating packages...
-dnf update
 echo GNOME settings...
 beesu gsettings set org.gnome.desktop.wm.preferences theme 'Adwaita'
 beesu gsettings set org.gnome.desktop.interface icon-theme 'Paper'
 beesu gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 beesu gsettings set org.gnome.desktop.interface enable-animations true
 %end
-
-
