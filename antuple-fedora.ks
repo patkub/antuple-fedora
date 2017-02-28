@@ -18,8 +18,15 @@ python-vlc
 npapi-vlc
 %end
 
+%pre
+setenforce 0
+yum clean expire-cache
+yum update selinux-policy\*
+%end
+
 %post
 /bin/bash
+setenforce 1
 echo Antuple Fedora $releasever $basearch
 echo Setting hostname...
 hostnamectl set-hostname laptop.antuple
