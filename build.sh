@@ -30,15 +30,15 @@ echo "${red}************************************${reset}"
 echo " "
 
 # get fedora boot.iso
-echo "${green}Getting fedora boot.iso...${reset}"
-wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
+#echo "${green}Getting fedora boot.iso...${reset}"
+#wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
 
 # setup mock
-echo "${green}Setting up mock...${reset}"
-dnf install mock
-cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --init
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vim-minimal pykickstart qemu
+#echo "${green}Setting up mock...${reset}"
+#dnf install mock
+#cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
+#mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --init
+#mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vim-minimal pykickstart qemu
 
 # copy kickstart
 echo "${green}Copying Kickstart...${reset}"
