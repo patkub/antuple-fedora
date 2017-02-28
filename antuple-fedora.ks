@@ -1,8 +1,8 @@
 %include fedora-live-base.ks
 
-repo --name=free --baseurl=http://download1.rpmfusion.org/free/fedora/releases/25/Everything/i386/os/
-repo --name=nonfree --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/25/Everything/i386/os/
-repo --name=snwh-paper --baseurl=http://download.opensuse.org/repositories/home:snwh:paper/Fedora_25/
+repo --name=free --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/
+repo --name=nonfree --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/
+repo --name=snwh-paper --baseurl=http://download.opensuse.org/repositories/home:snwh:paper/Fedora_$releasever/
 repo --name=google-chrome --baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
 
 %packages
@@ -20,7 +20,7 @@ npapi-vlc
 
 %post
 /bin/bash
-echo Antuple Fedora
+echo Antuple Fedora $releasever $basearch
 echo Setting hostname...
 hostnamectl set-hostname laptop.antuple
 echo GNOME settings...
