@@ -23,6 +23,7 @@ fi
 RELEASE_VER=$1
 BASE_ARCH=$2
 BUILD_VER=$3
+MOCK_IMG=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v$BUILD_VER
 
 echo "${red}************************************${reset}"
 echo "${green}   Antuple Fedora Release Script!"
@@ -37,25 +38,25 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/W
 # setup mock
 echo "${green}Setting up mock...${reset}"
 dnf install mock
-cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --init
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vim-minimal pykickstart qemu
+cp $MOCK_IMG.cfg /etc/mock/
+mock -r $MOCK_IMG --init
+mock -r $MOCK_IMG --install lorax-lmc-novirt git vim-minimal pykickstart qemu
 
 # copy kickstart
 echo "${green}Copying Kickstart...${reset}"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "mkdir remix"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "cd remix"
+mock -r $MOCK_IMG --chroot "mkdir remix"
+mock -r $MOCK_IMG --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
+mock -r $MOCK_IMG --chroot "cd remix"
 
 # flatten kickstart
 echo "${green}Flattening kickstart...${reset}"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER"
+mock -r $MOCK_IMG --chroot "ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER"
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v$BUILD_VER.iso --ks=flat-antuple-fedora.ks"
+mock -r $MOCK_IMG --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=$MOCK_IMG.iso --ks=flat-antuple-fedora.ks"
 
 # save log
 echo "${green}Saving log...${reset}"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --copyout /remix/virt-install.log virt-install.log
+mock -r $MOCK_IMG --copyout /remix/virt-install.log virt-install.log
 
