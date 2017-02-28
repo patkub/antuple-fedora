@@ -1,8 +1,8 @@
 %include fedora-live-base.ks
 
-repo --name=free --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/
-repo --name=nonfree --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/
-repo --name=snwh-paper --baseurl=http://download.opensuse.org/repositories/home:snwh:paper/Fedora_$releasever/
+repo --name=free --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/os/repodata/
+repo --name=nonfree --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/os/repodata/
+repo --name=snwh-paper --baseurl=http://download.opensuse.org/repositories/home:snwh:paper/Fedora_$releasever/repodata/
 repo --name=google-chrome --baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
 
 %packages
