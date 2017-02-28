@@ -45,7 +45,7 @@ mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vi
 echo "${green}Copying Kickstart...${reset}"
 mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "mkdir remix"
 mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
-mock -r antuple-fedora-25-x86_64 --chroot "cd remix"
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "cd remix"
 
 # flatten kickstart
 echo "${green}Flattening kickstart...${reset}"
