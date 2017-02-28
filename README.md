@@ -29,11 +29,6 @@ mock -r antuple-fedora-25-x86_64 --shell
 cd remix
 ```
 
-#### Install Dependencies
-```sh
-dnf install qemu
-```
-
 #### Flatten the kickstart file
 ```sh
 ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F25
