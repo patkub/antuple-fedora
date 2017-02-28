@@ -26,22 +26,10 @@ BUILD_VER=$3
 MOCK_IMG=antuple-fedora-$RELEASE_VER-$BASE_ARCH
 
 echo "${red}************************************${reset}"
-echo "${green}   Antuple Fedora Release Script!"
-echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH v$BUILD_VER"
+echo "${green}   Antuple Fedora Release Script!${reset}"
+echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH v$BUILD_VER${reset}"
 echo "${red}************************************${reset}"
 echo " "
-
-# get fedora boot.iso
-echo "${green}Getting fedora boot.iso...${reset}"
-#rm -rf boot.iso
-wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
-
-# setup mock
-echo "${green}Setting up mock...${reset}"
-dnf install mock
-cp $MOCK_IMG.cfg /etc/mock/
-mock -r $MOCK_IMG --init
-mock -r $MOCK_IMG --install lorax-lmc-novirt git vim-minimal pykickstart qemu
 
 # copy kickstart
 echo "${green}Copying Kickstart...${reset}"
