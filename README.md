@@ -1,4 +1,10 @@
-# Setup
+# Option 1: Using build.sh
+To build Fedora 25 x86_64:
+```sh
+sudo bash build.sh 25 x86_64 1
+```
+
+# Option 2: Manual Setup
 
 ## Grab the Fedora boot.iso
 ```sh
