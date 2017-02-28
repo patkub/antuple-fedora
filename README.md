@@ -7,17 +7,17 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/25/Workstation
 
 ## Setup Mock
 ```sh
-cp fedora-25-x86_64.cfg /etc/mock/fedora-25-x86_64.cfg
-mock -r fedora-25-x86_64 --init
-mock -r fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart qemu
-mock -r fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
+cp antuple-fedora-25-x86_64.cfg /etc/mock/
+mock -r antuple-fedora-25-x86_64 --init
+mock -r antuple-fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart qemu
+mock -r antuple-fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
 ```
 
 ## Kickstart
 
 #### Start a shell
 ```sh
-mock -r fedora-25-x86_64 --shell
+mock -r antuple-fedora-25-x86_64 --shell
 ```
 
 #### Install Dependencies
@@ -37,6 +37,6 @@ livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-25-x86_64-
 
 To get a log of the livemedia-creator process, copy the virt-install.log file:
 ```sh
-mock -r fedora-25-x86_64 --copyout /remix/virt-install.log virt-install.log
+mock -r antuple-fedora-25-x86_64 --copyout /remix/virt-install.log virt-install.log
 ```
 
