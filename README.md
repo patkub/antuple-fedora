@@ -7,6 +7,7 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/25/Workstation
 
 ## Setup Mock
 ```sh
+dnf install mock
 cp antuple-fedora-25-x86_64.cfg /etc/mock/
 mock -r antuple-fedora-25-x86_64 --init
 mock -r antuple-fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart qemu
