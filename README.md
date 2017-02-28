@@ -35,3 +35,8 @@ ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F25
 livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-25-x86_64-v1.iso --ks=flat-antuple-fedora.ks
 ```
 
+To get a log of the livemedia-creator process, copy the virt-install.log file:
+```sh
+mock -r fedora-25-x86_64 --copyout /remix/virt-install.log virt-install.log
+```
+
