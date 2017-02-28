@@ -1,13 +1,13 @@
 #!/bin/bash
 
-########################################################
-# Antuple Fedora Release Script                        #
-# @author: Patrick Kubiak                              #
-#                                                      #
-# Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH]  #
-# Example: sudo bash build.sh 25 x86_64                #
-#                                                      #
-########################################################
+####################################################################
+# Antuple Fedora Release Script                                    #
+# @author: Patrick Kubiak                                          #
+#                                                                  #
+# Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]  #
+# Example: sudo bash build.sh 25 x86_64 1                          #
+#                                                                  #
+####################################################################
 
 # Colors
 green=`tput setaf 2`
@@ -15,17 +15,18 @@ red=`tput setaf 1`
 reset=`tput sgr0`
 
 # check arguments
-if [ $# -ne 2 ]; then
-    echo "Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH]"
+if [ $# -ne 3 ]; then
+    echo "Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]"
     exit 1
 fi
 
 RELEASE_VER=$1
 BASE_ARCH=$2
+BUILD_VER=$3
 
 echo "${red}************************************${reset}"
 echo "${green}   Antuple Fedora Release Script!"
-echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH"
+echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH v$BUILD_VER"
 echo "${red}************************************${reset}"
 echo " "
 
@@ -52,7 +53,7 @@ mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "ksflatten -v, --config 
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v1.iso --ks=flat-antuple-fedora.ks"
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v$BUILD_VER.iso --ks=flat-antuple-fedora.ks"
 
 # save log
 echo "${green}Saving log...${reset}"
