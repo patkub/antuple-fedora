@@ -10,7 +10,7 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/25/Workstation
 cp fedora-25-x86_64.cfg /etc/mock/fedora-25-x86_64.cfg
 mock -r fedora-25-x86_64 --init
 mock -r fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart qemu
-mock -r fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso
+mock -r fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
 ```
 
 ## Kickstart
