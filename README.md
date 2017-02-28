@@ -25,6 +25,7 @@ mock -r antuple-fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks 
 #### Start a shell
 ```sh
 mock -r antuple-fedora-25-x86_64 --shell
+cd remix
 ```
 
 #### Install Dependencies
