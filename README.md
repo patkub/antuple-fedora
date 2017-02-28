@@ -10,10 +10,17 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/25/Workstation
 cp antuple-fedora-25-x86_64.cfg /etc/mock/
 mock -r antuple-fedora-25-x86_64 --init
 mock -r antuple-fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart qemu
-mock -r antuple-fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
 ```
 
 ## Kickstart
+
+### Copy Kickstart files
+```sh
+mock -r antuple-fedora-25-x86_64 --shell
+mkdir remix
+exit
+mock -r antuple-fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
+```
 
 #### Start a shell
 ```sh
