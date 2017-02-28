@@ -17,26 +17,19 @@ mock -r antuple-fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pyki
 
 ### Copy Kickstart files
 ```sh
-mock -r antuple-fedora-25-x86_64 --shell
-mkdir remix
-exit
+mock -r antuple-fedora-25-x86_64 --chroot "mkdir remix"
 mock -r antuple-fedora-25-x86_64 --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
-```
-
-#### Start a shell
-```sh
-mock -r antuple-fedora-25-x86_64 --shell
-cd remix
+mock -r antuple-fedora-25-x86_64 --chroot "cd remix"
 ```
 
 #### Flatten the kickstart file
 ```sh
-ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F25
+mock -r antuple-fedora-25-x86_64 --chroot "ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F25"
 ```
 
 #### Make the iso
 ```sh
-livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-25-x86_64-v1.iso --ks=flat-antuple-fedora.ks
+mock -r antuple-fedora-25-x86_64 --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-25-x86_64-v1.iso --ks=flat-antuple-fedora.ks"
 ```
 
 To get a log of the livemedia-creator process, copy the virt-install.log file:

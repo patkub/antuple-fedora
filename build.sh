@@ -30,28 +30,29 @@ echo "${red}************************************${reset}"
 echo " "
 
 # get fedora boot.iso
-#echo "${green}Getting fedora boot.iso...${reset}"
-#wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
+echo "${green}Getting fedora boot.iso...${reset}"
+wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
 
 # setup mock
-#echo "${green}Setting up mock...${reset}"
-#dnf install mock
-#cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
-#mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --init
-#mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vim-minimal pykickstart qemu
+echo "${green}Setting up mock...${reset}"
+dnf install mock
+cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --init
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --install lorax-lmc-novirt git vim-minimal pykickstart qemu
 
 # copy kickstart
 echo "${green}Copying Kickstart...${reset}"
-sh -c "mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --shell; mkdir remix"
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "mkdir remix"
 mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
+mock -r antuple-fedora-25-x86_64 --chroot "cd remix"
 
 # flatten kickstart
 echo "${green}Flattening kickstart...${reset}"
-ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER"
 
 # make iso
 echo "${green}Building iso...${reset}"
-livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v1.iso --ks=flat-antuple-fedora.ks
+mock -r antuple-fedora-$RELEASE_VER-$BASE_ARCH --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-$RELEASE_VER-$BASE_ARCH-v1.iso --ks=flat-antuple-fedora.ks"
 
 # save log
 echo "${green}Saving log...${reset}"
