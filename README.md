@@ -32,7 +32,7 @@ mock -r antuple-fedora-25-x86_64 --chroot "ksflatten -v, --config antuple-fedora
 mock -r antuple-fedora-25-x86_64 --chroot "livemedia-creator --make-iso --iso=boot.iso --iso-name=antuple-fedora-25-x86_64-v1.iso --ks=flat-antuple-fedora.ks"
 ```
 
-To get a log of the livemedia-creator process, copy the virt-install.log file:
+To get a log of the livemedia-creator process by copying the virt-install.log file:
 ```sh
 mock -r antuple-fedora-25-x86_64 --copyout /remix/virt-install.log virt-install.log
 ```
