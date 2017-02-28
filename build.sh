@@ -38,7 +38,7 @@ wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/W
 # setup mock
 echo "${green}Setting up mock...${reset}"
 dnf install mock
-cp $MOCK_IMG.cfg /etc/mock/
+cp antuple-fedora-$RELEASE_VER-$BASE_ARCH.cfg /etc/mock/
 mock -r $MOCK_IMG --init
 mock -r $MOCK_IMG --install lorax-lmc-novirt git vim-minimal pykickstart qemu
 
