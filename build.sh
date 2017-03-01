@@ -43,7 +43,7 @@ mock -r $MOCK_IMG --chroot --cwd=remix/ "ksflatten -v, --config antuple-fedora.k
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
+mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --resultdir /var/lmc --project $TITLE-Live --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
 
 # save iso
 echo "${green}Saving iso...${reset}"
