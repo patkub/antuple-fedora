@@ -23,7 +23,7 @@ fi
 RELEASE_VER=$1
 BASE_ARCH=$2
 BUILD_VER=$3
-MOCK_IMG=antupe-fedora-$RELEASE_VER-$BASE_ARCH
+MOCK_IMG=antuple-fedora-$RELEASE_VER-$BASE_ARCH
 TITLE=Antuple-Fedora-$RELEASE_VER-$BASE_ARCH
 
 echo "${red}************************************${reset}"
@@ -45,12 +45,11 @@ mock -r $MOCK_IMG --chroot --cwd=remix/ "ksflatten -v, --config antuple-fedora.k
 echo "${green}Building iso...${reset}"
 mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
 
-# save log
-echo "${green}Saving log...${reset}"
-mock -r $MOCK_IMG --copyout /remix/virt-install.log virt-install.log
-
 # save iso
 echo "${green}Saving iso...${reset}"
 mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso
 
+# save log
+echo "${green}Saving log...${reset}"
+mock -r $MOCK_IMG --copyout /remix/virt-install.log virt-install.log
 
