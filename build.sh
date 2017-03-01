@@ -47,7 +47,7 @@ mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fed
 
 # save iso
 echo "${green}Saving iso...${reset}"
-mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso
+mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
 
 # save log
 echo "${green}Saving log...${reset}"
