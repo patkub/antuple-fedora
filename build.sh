@@ -32,14 +32,14 @@ echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH v$BUILD_VER${reset}"
 echo "${red}************************************${reset}"
 echo " "
 
+# flatten kickstart
+echo "${green}Flattening kickstart...${reset}"
+ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER
+
 # copy kickstart
 echo "${green}Copying Kickstart...${reset}"
 mock -r $MOCK_IMG --chroot "mkdir remix"
-mock -r $MOCK_IMG --copyin antuple-fedora.ks fedora-live-base.ks fedora-repo.ks fedora-repo-not-rawhide.ks boot.iso remix/
-
-# flatten kickstart
-echo "${green}Flattening kickstart...${reset}"
-mock -r $MOCK_IMG --chroot --cwd=remix/ "ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER"
+mock -r $MOCK_IMG --copyin flat-antuple-fedora.ks boot.iso remix/
 
 # make iso
 echo "${green}Building iso...${reset}"

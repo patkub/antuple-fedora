@@ -1,4 +1,4 @@
-%include fedora-live-base.ks
+%include fedora-kickstarts/fedora-live-workstation.ks
 
 repo --name=free --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/os/
 repo --name=nonfree --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/os/
