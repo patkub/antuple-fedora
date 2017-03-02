@@ -42,5 +42,5 @@ echo "${green}Setting up mock...${reset}"
 dnf install mock
 cp $MOCK_IMG.cfg /etc/mock/
 mock -r $MOCK_IMG --init
-mock -r $MOCK_IMG --install lorax-lmc-novirt pykickstart qemu wget
+mock -r $MOCK_IMG --install lorax-lmc-novirt pykickstart qemu nosync wget
 
