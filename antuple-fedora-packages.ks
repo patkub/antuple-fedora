@@ -1,0 +1,4 @@
+%packages
+google-chrome
+%end
+
