@@ -6,3 +6,12 @@ sudo bash envsetup.sh 25 x86_64
 sudo bash build.sh 25 x86_64 1
 ```
 
+Users:
+```
+User: root
+Password: liveuser
+
+User: liveuser
+Password: liveuser
+```
+
