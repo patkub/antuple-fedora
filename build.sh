@@ -37,7 +37,7 @@ echo "${green}Flattening kickstart...${reset}"
 ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$RELEASE_VER
 
 # copy kickstart
-echo "${green}Copying Kickstart...${reset}"
+echo "${green}Copying kickstart...${reset}"
 mock -r $MOCK_IMG --chroot "mkdir remix"
 mock -r $MOCK_IMG --copyin flat-antuple-fedora.ks boot.iso remix/
 
@@ -52,4 +52,8 @@ mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
 # save log
 echo "${green}Saving log...${reset}"
 mock -r $MOCK_IMG --copyout /remix/livemedia.log livemedia.log
+
+# clean up
+echo "${green}Cleaning up...${reset}"
+mock -r $MOCK_IMG --chroot --cwd=/var "rm -rf lmc" 
 
