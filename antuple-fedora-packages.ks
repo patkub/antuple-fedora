@@ -3,6 +3,7 @@
 @standard
 @hardware-support
 @base-x
+@gnome-desktop
 @firefox
 @fonts
 @libreoffice
