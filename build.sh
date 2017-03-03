@@ -50,8 +50,9 @@ echo "${green}Saving iso...${reset}"
 mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
 
 # save log
-echo "${green}Saving log...${reset}"
+echo "${green}Saving logs...${reset}"
 mock -r $MOCK_IMG --copyout /remix/livemedia.log livemedia.log
+mock -r $MOCK_IMG --copyout /remix/program.log program.log
 
 # clean up
 echo "${green}Cleaning up...${reset}"
