@@ -38,23 +38,23 @@ ksflatten -v, --config antuple-fedora.ks -o flat-antuple-fedora.ks --version F$R
 
 # copy kickstart
 echo "${green}Copying kickstart...${reset}"
-mock -r $MOCK_IMG --chroot "mkdir remix"
-mock -r $MOCK_IMG --copyin flat-antuple-fedora.ks boot.iso remix/
+mock -r $MOCK_IMG -n --no-cleanup-after --chroot "mkdir remix"
+mock -r $MOCK_IMG -n --no-cleanup-after --copyin flat-antuple-fedora.ks boot.iso remix/
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --iso=boot.iso --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
+mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --iso=boot.iso --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
 
 # save iso
 echo "${green}Saving iso...${reset}"
-mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
+mock -r $MOCK_IMG -n --no-cleanup-after --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
 
 # save log
 echo "${green}Saving logs...${reset}"
-mock -r $MOCK_IMG --copyout /remix/livemedia.log livemedia.log
-mock -r $MOCK_IMG --copyout /remix/program.log program.log
+mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/livemedia.log livemedia.log
+mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/program.log program.log
 
 # clean up
 echo "${green}Cleaning up...${reset}"
-mock -r $MOCK_IMG --chroot --cwd=/var "rm -rf lmc" 
+mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc" 
 

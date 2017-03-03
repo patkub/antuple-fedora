@@ -39,8 +39,8 @@ fi
 
 # setup mock
 echo "${green}Setting up mock...${reset}"
-dnf install mock
-dnf install pykickstart
+dnf install -y --best --allowerasing mock
+dnf install -y --best --allowerasing pykickstart
 cp $MOCK_IMG.cfg /etc/mock/
 mock -r $MOCK_IMG --init
 mock -r $MOCK_IMG --install lorax-lmc-novirt pykickstart nosync wget
