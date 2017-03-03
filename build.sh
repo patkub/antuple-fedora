@@ -43,13 +43,13 @@ mock -r $MOCK_IMG --copyin flat-antuple-fedora.ks boot.iso remix/
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --resultdir /var/lmc --project $TITLE-Live --iso=boot.iso --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
+mock -r $MOCK_IMG --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --iso=boot.iso --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
 
 # save iso
 echo "${green}Saving iso...${reset}"
 mock -r $MOCK_IMG --copyout /var/lmc/$TITLE-$BUILD_VER.iso $TITLE-$BUILD_VER.iso
 
 # save log
-echo "${green}Saving log...${reset}"
-mock -r $MOCK_IMG --copyout /remix/virt-install.log virt-install.log
+#echo "${green}Saving log...${reset}"
+#mock -r $MOCK_IMG --copyout /remix/virt-install.log virt-install.log
 

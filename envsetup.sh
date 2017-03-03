@@ -31,7 +31,7 @@ echo " "
 
 # get fedora boot.iso
 if [ ! -f boot.iso ]; then
-    echo "${green}Getting fedora boot.iso...${reset}"
+    echo "${green}Downloading fedora boot.iso...${reset}"
     wget https://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE_VER/Workstation/$BASE_ARCH/os/images/boot.iso
 else
     echo "${green}Using existing fedora boot.iso...${reset}"
