@@ -13,5 +13,5 @@
 %include antuple-fedora-packages.ks
 
 # post-install
-%include antuple-fedora-post.ks
+#%include antuple-fedora-post.ks
 
