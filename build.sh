@@ -5,6 +5,7 @@
 # @author: Patrick Kubiak                                          #
 #                                                                  #
 # Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]  #
+# Clean: sudo bash build.sh clean				   #
 # Example: sudo bash build.sh 25 x86_64 1                          #
 #                                                                  #
 ####################################################################
@@ -13,6 +14,14 @@
 green=`tput setaf 2`
 red=`tput setaf 1`
 reset=`tput sgr0`
+
+# clean up
+if [ $1 = "clean" ]; then
+	# clean up
+	echo "${green}Cleaning up...${reset}"
+	mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc"
+	exit 0
+fi
 
 # check arguments
 if [ $# -ne 3 ]; then
@@ -53,8 +62,4 @@ mock -r $MOCK_IMG -n --no-cleanup-after --copyout /var/lmc/$TITLE-$BUILD_VER.iso
 echo "${green}Saving logs...${reset}"
 mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/livemedia.log livemedia.log
 mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/program.log program.log
-
-# clean up
-#echo "${green}Cleaning up...${reset}"
-#mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc" 
 
