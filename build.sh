@@ -43,7 +43,7 @@ mock -r $MOCK_IMG -n --no-cleanup-after --copyin flat-antuple-fedora.ks boot.iso
 
 # make iso
 echo "${green}Building iso...${reset}"
-mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --iso=boot.iso --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
+mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=remix/ "livemedia-creator --ks flat-antuple-fedora.ks --no-virt --resultdir /var/lmc --project $TITLE-Live --make-iso --volid $TITLE --iso-only --iso-name $TITLE-$BUILD_VER.iso --releasever $RELEASE_VER --title $TITLE --macboot"
 
 # save iso
 echo "${green}Saving iso...${reset}"
@@ -55,6 +55,6 @@ mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/livemedia.log livemedia
 mock -r $MOCK_IMG -n --no-cleanup-after --copyout /remix/program.log program.log
 
 # clean up
-echo "${green}Cleaning up...${reset}"
-mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc" 
+#echo "${green}Cleaning up...${reset}"
+#mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc" 
 
