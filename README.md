@@ -8,7 +8,7 @@ sudo bash build.sh 25 x86_64 1
 
 Clean up before rebuilding:
 ```sh
-sudo bash build.sh clean
+sudo bash build.sh 25 x86_64 clean
 ```
 
 Users:
