@@ -1,30 +1,22 @@
 #!/bin/bash
 
-####################################################################
-# Antuple Fedora Release Script                                    #
-# @author: Patrick Kubiak                                          #
-#                                                                  #
-# Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]  #
-# Clean: sudo bash build.sh clean				   #
-# Example: sudo bash build.sh 25 x86_64 1                          #
-#                                                                  #
-####################################################################
+#####################################################################
+# Antuple Fedora Release Script                                     #
+# @author: Patrick Kubiak                                           #
+#                                                                   #
+# Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]   #
+# Clean: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] clean         #
+# Example: sudo bash build.sh 25 x86_64 1                           #
+#                                                                   #
+#####################################################################
 
-# Colors
+# colors
 green=`tput setaf 2`
 red=`tput setaf 1`
 reset=`tput sgr0`
 
-# clean up
-if [ $1 = "clean" ]; then
-	# clean up
-	echo "${green}Cleaning up...${reset}"
-	mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc"
-	exit 0
-fi
-
 # check arguments
-if [ $# -ne 3 ]; then
+if [ $# -lt 3 ]; then
     echo "Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]"
     exit 1
 fi
@@ -40,6 +32,14 @@ echo "${green}   Antuple Fedora Release Script!${reset}"
 echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH v$BUILD_VER${reset}"
 echo "${red}************************************${reset}"
 echo " "
+
+# clean up
+if [ $3 = "clean" ]; then
+	# clean up
+	echo "${green}Cleaning up...${reset}"
+	mock -r $MOCK_IMG -n --no-cleanup-after --chroot --cwd=/var "rm -rf lmc"
+	exit 0
+fi
 
 # flatten kickstart
 echo "${green}Flattening kickstart...${reset}"

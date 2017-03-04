@@ -9,7 +9,7 @@
 #                                                          #
 ############################################################
 
-# Colors
+# colors
 green=`tput setaf 2`
 red=`tput setaf 1`
 reset=`tput sgr0`
