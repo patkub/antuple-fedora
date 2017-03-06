@@ -4,7 +4,7 @@
 %include antuple-fedora-repos.ks
 
 # configuration
-#%include antuple-fedora-config.ks
+%include antuple-fedora-config.ks
 
 # pre-install
 #%include antuple-fedora-pre.ks
