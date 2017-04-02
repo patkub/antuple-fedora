@@ -24,9 +24,10 @@ RELEASE_VER=$1
 BASE_ARCH=$2
 MOCK_IMG=antuple-fedora-$RELEASE_VER-$BASE_ARCH
 
-echo "${red}************************************${reset}"
+echo "${red}****************************************${reset}"
 echo "${green}   Antuple Fedora Build Setup Script!${reset}"
-echo "${red}************************************${reset}"
+echo "${green}   Based on Fedora $RELEASE_VER $BASE_ARCH"
+echo "${red}****************************************${reset}"
 echo " "
 
 # get fedora boot.iso
@@ -43,5 +44,5 @@ dnf install -y --best --allowerasing mock
 dnf install -y --best --allowerasing pykickstart
 cp $MOCK_IMG.cfg /etc/mock/
 mock -r $MOCK_IMG --init
-mock -r $MOCK_IMG --install lorax-lmc-novirt pykickstart nosync wget
+mock -r $MOCK_IMG --install lorax-lmc-novirt pykickstart nosync dracut-live wget
 
